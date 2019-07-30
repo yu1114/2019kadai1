@@ -45,6 +45,7 @@ public class ITECafe {
 
         //メニューを表示する
         int inputNum;
+        int inputMum;
         int goukei = 0;
 
         while (true) {
@@ -85,12 +86,12 @@ public class ITECafe {
             }
 
             System.out.println("数量を入力してください");
-            String inputStr;
-            inputStr = scan.next();
-            inputNum = Integer.parseInt(inputStr);
+            String inputMtr;
+            inputMtr = scan.next();
+            inputMum = Integer.parseInt(inputMtr);
             
-            goukei += items[inputNum - 1].getPrice() * inputNum;
-            goukei = (int)(goukei * 1.08);
+            
+            goukei = (int)(goukei + (items[inputNum-1].getPrice()*inputMum* 1.08));
             System.out.println( goukei );
             
             System.out.println("合計金額は" + goukei + "円です");
@@ -101,8 +102,8 @@ public class ITECafe {
             System.out.println("入力はおわりましたか？");
             System.out.println("注文を終える場合は1を入力してください");
             System.out.println("1以外は追加注文できます");
-            inputStr = scan.next();
-            inputNum = Integer.parseInt(inputStr);
+            inputMtr = scan.next();
+            inputNum = Integer.parseInt(inputMtr);
             if( inputNum == 1 ){
                 break;
             }
@@ -110,19 +111,21 @@ public class ITECafe {
         }
         
          System.out.println("お支払い金額は何円ですか");
+         while(true){
           String inputStr;
             inputStr = scan.next();
             int osiharai = Integer.parseInt(inputStr);
+            if(osiharai>=goukei){
             int oturi = osiharai-goukei;
          System.out.println("お釣りは" + oturi + "円です");
         
          System.out.println("ありがとうございました");
-        
+    }else if(osiharai<=goukei){
+        int tarinai = goukei - osiharai;
+    }
+            
         
       
-                
-        
-        
-        
+        }  
     }
 }
